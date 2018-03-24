@@ -11,12 +11,14 @@
 				});
 				con.connect(function(err) {
 					if (err) throw err;
-					var sql = "SELECT * FROM locations";
-					con.query(sql, function (err, result) {
+					con.query("SELECT * FROM customers", function (err, result, fields) {
+						if (err) throw err;
+						document.write(result);
+					});
 				});
 			}
 		</script>
         <body>
-			<button onclick="connect()"></button>
+			<button onclick="connect()">DBTest</button>
         </body>
 </html>
