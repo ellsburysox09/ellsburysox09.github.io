@@ -11,15 +11,17 @@
 				});
 				con.connect(function(err) {
 					if (err) throw err;
-					con.query("SELECT * FROM customers", function (err, result, fields) {
+					document.getElementById("attempt").innerHTML = "Connected!";
+					con.query(sql, function (err, result) {
 						if (err) throw err;
-						document.getElementById("attempt").innerHTML = 5;
+						document.getElementById("dat").innerHTML = result;
 					});
 				});
 			}
 		</script>
         <body>
 			<button onclick="connect()">DBTest</button>
-			<p id="attempt">Test</p>
+			<p id="attempt">Not Yet tried</p>
+			<p id="dat">No Data</p>
         </body>
 </html>
