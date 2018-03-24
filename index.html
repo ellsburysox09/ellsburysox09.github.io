@@ -1,6 +1,7 @@
 <html> 
 		<script>
 			function connect() {
+				var sql = "SELECT * FROM locations";
 				var mysql = require('mysql');
 
 				var con = mysql.createConnection({
@@ -10,16 +11,17 @@
 					database: "mydb"
 				});
 				con.connect(function(err) {
-					if (err) throw err;
+					if (err) {
+						document.getElementById("attempt").innerHTML = "Not Connected!";
+					}
 					document.getElementById("attempt").innerHTML = "Connected!";
 					con.query(sql, function (err, result) {
-						if (err) throw err;
+						if (err) {
+							document.getElementById("dat").innerHTML = "Data fail;
+						}
 						document.getElementById("dat").innerHTML = result;
 					});
 				});
-			}
-			function working() {
-				document.getElementById("test").innerHTML = "worked";
 			}
 		</script>
         <body>
@@ -27,6 +29,5 @@
 			<input id="clickMeFirst" type="button" value="clickmefirst" onclick="working();" />
 			<p id="attempt">Not Yet tried</p>
 			<p id="dat">No Data</p>
-			<p id="test">not working</p>
         </body>
 </html>
