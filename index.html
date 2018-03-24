@@ -13,12 +13,13 @@
 					if (err) throw err;
 					con.query("SELECT * FROM customers", function (err, result, fields) {
 						if (err) throw err;
-						document.write(result);
+						document.getElementById("attempt").innerHTML = 5;
 					});
 				});
 			}
 		</script>
         <body>
 			<button onclick="connect()">DBTest</button>
+			<p id="attempt">Test</p>
         </body>
 </html>
